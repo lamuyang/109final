@@ -9,18 +9,10 @@ import time
 # chrome = webdriver.Chrome('./chromedriver', chrome_options=options)
 
 def get_captcha(driver):
-    driver.save_screenshot("test.png")
     element = driver.find_elements_by_tag_name("img")
-    print(element[1])
-    print(element[1].location)
-    print(element[1].size)
-    left = element[1].location["x"]
-    right = element[1].location["x"] + element[1].size["width"]
-    top = element[1].location["y"]
-    bottom = element[1].location["y"] + element[1].size["height"]
-    img = Image.open("test.png")
-    img = img.crop((left, top, right, bottom))
-    img.show()
+    img = element[1]
+    img.screenshot("captcha.png")
+
 
 
 driver = webdriver.Chrome()
@@ -33,7 +25,3 @@ username = driver.find_element_by_id("username")
 password = driver.find_element_by_id("password")
 captcha = driver.find_element_by_id("captcha")
 
-username.send_keys("408040143")
-password.send_keys("sandy010419")
-
-driver.close()
