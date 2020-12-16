@@ -8,7 +8,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing.image import load_img
 
 
-epochs = 100       #訓練的次數
+epochs = 10      #訓練的次數
 img_rows = 50   #驗證碼影像檔的高
 img_cols = 100   #驗證碼影像檔的寬
 digits_in_img = 4 #驗證碼影像檔中有幾位數
@@ -29,7 +29,7 @@ def split_digits_in_img(img_array, x_list, y_list):
 img_filenames = os.listdir('training')
  
 for img_filename in img_filenames:
-    if '.jpg' not in img_filename:
+    if '.png' not in img_filename:
         continue
     img = load_img('training/{0}'.format(img_filename), color_mode='grayscale')
     img_array = img_to_array(img)
