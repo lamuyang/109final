@@ -2,6 +2,8 @@ from selenium import webdriver
 import func
 from time import sleep
 import test
+import pandas as pd
+import csv
 
 
 driver = webdriver.Chrome()
@@ -26,19 +28,12 @@ sleep(5)
 
 info_dic = {"title":[], "class":[], "content":[]}
 
-title_class = driver.find_elements_by_css_selector("span.ng-binding")
-con = 0
-for i in range(3,47):
-    if title_class[i] == "" or title_class[i].text == "":
-        continue
-    if con % 4== 0:
-        print("標題：",title_class[i].text)
-        info_dic["title"].append(title_class[i].text)
-    elif con % 4 == 1:
-        print("課程：",title_class[i].text)
-        info_dic["class"].append(title_class[i].text)
-    con += 1
-info_dic["title"].pop()
+title_class = driver.find_elements_by_css_selector("span[ng-bind='bulletin.title']")
+for i in title_class:
+    info_dic["title"].append(i.text)
+class_name = driver.find_elements_by_css_selector("span[ng-bind='getCourseName(bulletin.course_id)']")
+for i in class_name:
+    info_dic["class"].append(i.text)
 
 op = driver.find_elements_by_css_selector("div.bulletin-update-info")
 for i in op:
@@ -48,5 +43,10 @@ contents = driver.find_elements_by_css_selector("div.content-review.ng-isolate-s
 for content in contents:
     info_dic["content"].append(content.text)
 
-print(info_dic)
+# print(info_dic["title"])
+# print(info_dic["class"])
+# print(info_dic["content"])
 driver.close()
+
+anouce = pd.DataFrame(info_dic)
+anouce.to_csv("./anouce.csv")

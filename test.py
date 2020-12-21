@@ -9,7 +9,7 @@ def start():
         win.destroy()
 
     win = tk.Tk()
-    win.title('BMI App')
+    win.title('抓取tronclass公告')
     win.geometry('640x480')
 
     header_label = tk.Label(win, text='請輸入LDAP帳號密碼')
