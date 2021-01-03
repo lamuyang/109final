@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter.constants import YES
 def start():
     def get_ac_pa():
         global ac, pa
@@ -50,21 +51,23 @@ def save_page(info_dic):
 
     win = tk.Tk()
     win.title('儲存tronclass公告')
-    win.geometry('640x480')
+    win.geometry('980x480')
 
-    header_label = tk.Label(win, text='公告抓取完成\n請選擇是否儲存成CSV檔')
+
+    header_label = tk.Label(win, text='公告抓取完成\n「請選擇是否儲存成CSV檔？」')
     header_label.pack()
 
-    listbox = tk.Listbox(win, width=50)
+    listbox = tk.Listbox(win, width=100)
     for i in range(10):
         a = str(i+1) + "：" + info_dic["title"][i] + ", " + info_dic["class"][i] + ", " + info_dic["content"][i]
         listbox.insert('end', a)
     listbox.pack()
 
     yes_btn = tk.Button(win, text='YES', command=yes)
-    yes_btn.pack(side=tk.LEFT, padx = 190)
+    yes_btn.pack(side=tk.LEFT, padx = 300)
     no_btn = tk.Button(win, text='NO', command=no)
-    no_btn.pack(side = tk.LEFT)
-    
+    no_btn.pack(side = tk.LEFT, )
+
+
     win.mainloop() 
     return check
