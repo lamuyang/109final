@@ -37,3 +37,34 @@ def start():
     send_btn.pack()
     win.mainloop()  
     return ac, pa
+
+def save_page(info_dic):
+    def yes():
+        global check
+        check = True
+        win.destroy()
+    def no():
+        global check
+        check = False
+        win.destroy()
+
+    win = tk.Tk()
+    win.title('儲存tronclass公告')
+    win.geometry('640x480')
+
+    header_label = tk.Label(win, text='公告抓取完成\n請選擇是否儲存成CSV檔')
+    header_label.pack()
+
+    listbox = tk.Listbox(win, width=50)
+    for i in range(10):
+        a = str(i+1) + "：" + info_dic["title"][i] + ", " + info_dic["class"][i] + ", " + info_dic["content"][i]
+        listbox.insert('end', a)
+    listbox.pack()
+
+    yes_btn = tk.Button(win, text='YES', command=yes)
+    yes_btn.pack(side=tk.LEFT, padx = 190)
+    no_btn = tk.Button(win, text='NO', command=no)
+    no_btn.pack(side = tk.LEFT)
+    
+    win.mainloop() 
+    return check

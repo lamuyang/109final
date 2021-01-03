@@ -1,7 +1,7 @@
 from selenium import webdriver
 import func
 from time import sleep
-import test
+import gui
 import pandas as pd
 import csv
 
@@ -27,7 +27,7 @@ driver = webdriver.Chrome(chrome_options=options, executable_path='./chromedrive
 # driver = webdriver.Chrome()
 driver.get("https://caselearn2.fju.edu.tw/cas/login?service=https%3A//elearn2.fju.edu.tw/login%3Fnext%3D/user/index&locale=zh_TW&ts=1607908465.74927")
 
-ac, pa = test.start()
+ac, pa = gui.start()
 login(driver, ac, pa)
 capt(driver)
 
@@ -38,7 +38,7 @@ while title == "天主教輔仁大學 - 登入 Tronclass":
         login(driver, ac, pa)
         capt(driver)
     else:
-        ac, pa = test.start()
+        ac, pa = gui.start()
         login(driver, ac, pa)
         capt(driver)
     title = driver.title
@@ -67,5 +67,8 @@ for content in contents:
 
 driver.close()
 
-anouce = pd.DataFrame(info_dic)
-anouce.to_csv("./anouce.csv")
+check = gui.save_page(info_dic)
+if check == True:
+    anouce = pd.DataFrame(info_dic)
+    anouce.to_csv("./anouce.csv")
+    print("11")
