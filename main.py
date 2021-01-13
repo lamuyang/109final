@@ -23,7 +23,7 @@ def capt(driver):
 
 options = webdriver.ChromeOptions()
 options.add_argument("--headless")
-# driver = webdriver.Chrome(chrome_options=options, executable_path='./chromedriver')
+#driver = webdriver.Chrome(chrome_options=options, executable_path='./chromedriver')
 driver = webdriver.Chrome(chrome_options=options)
 driver.get("https://caselearn2.fju.edu.tw/cas/login?service=https%3A//elearn2.fju.edu.tw/login%3Fnext%3D/user/index&locale=zh_TW&ts=1607908465.74927")
 
